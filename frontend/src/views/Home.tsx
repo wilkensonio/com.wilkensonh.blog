@@ -13,13 +13,13 @@ const  LandingPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const {featuredArticles, latestArticles} = useAppSelector((state: RootState) => state.article);
 
-  const categories = [
-    { name: 'All', icon: <Cpu className="w-6 h-6" /> },
-    { name: 'Machine Learning', icon: <Zap className="w-6 h-6" /> },
-    { name: 'Data Science', icon: <Code className="w-6 h-6" /> },
-    { name: 'Deep Learning', icon: <Zap className="w-6 h-6" /> },
-    { name: 'Algorithms', icon: <Braces className="w-6 h-6" /> }
-  ];
+  // const categories = [
+  //   { name: 'All', icon: <Cpu className="w-6 h-6" /> },
+  //   { name: 'Machine Learning', icon: <Zap className="w-6 h-6" /> },
+  //   { name: 'Data Science', icon: <Code className="w-6 h-6" /> },
+  //   { name: 'Deep Learning', icon: <Zap className="w-6 h-6" /> },
+  //   { name: 'Algorithms', icon: <Braces className="w-6 h-6" /> }
+  // ];
 
   const featuredArticleData = [
     {
@@ -61,7 +61,7 @@ const  LandingPage: React.FC = () => {
       // imageUrl: '/api/placeholder/800/400'
     },
     {
-      id: 2,
+      id: 3,
       title: 'Ethical AI: Navigating the Complex Landscape',
       excerpt: 'A deep dive into the moral considerations and responsible development of artificial intelligence.',
       author: 'Michael Chen',
@@ -80,7 +80,7 @@ const  LandingPage: React.FC = () => {
       // imageUrl: '/api/placeholder/800/400'
     },
     {
-      id: 2,
+      id: 4,
       title: 'Ethical AI: Navigating the Complex Landscape',
       excerpt: 'A deep dive into the moral considerations and responsible development of artificial intelligence.',
       author: 'Michael Chen',
@@ -102,7 +102,7 @@ const  LandingPage: React.FC = () => {
   
   const latestArticleData = [
     {
-      id: 3,
+      id: 5,
       title: 'Neural Networks: Beyond the Basics',
       excerpt: 'Advanced techniques in deep learning and neural network architectures.',
       author: 'Sarah Kim',
@@ -119,7 +119,7 @@ const  LandingPage: React.FC = () => {
       tags: ['Machine Learning', 'AI Innovation', 'Technology Trends']
     },
     {
-      id: 4,
+      id: 6,
       title: 'AI in Healthcare: Revolutionizing Diagnosis',
       excerpt: 'How artificial intelligence is transforming medical diagnostics and patient care.',
       author: 'Dr. James Watson',
@@ -153,10 +153,10 @@ const  LandingPage: React.FC = () => {
         
         <div className="relative z-10 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-            Kadeeno Blog
+            Kadeeno Pulse
           </h1>
           <p className="text-xl md:text-2xl mb-10 text-gray-200">
-            Exploring the Frontiers of Artificial Intelligence, One Breakthrough at a Time
+            Capturing the heartbeat of the AI and data science world, staying updated with the latest trends, innovations, and discussions.
           </p>
           <div className="flex justify-center space-x-4">
             <input 
@@ -164,63 +164,66 @@ const  LandingPage: React.FC = () => {
               placeholder="Subscribe for the latest updates" 
               className="px-4 py-3 rounded-l-lg w-full max-w-md bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-300"
             />
-            <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-r-lg hover:from-blue-600 hover:to-purple-700 transition-all">
+            <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-r-lg hover:from-blue-600 hover:to-purple-700 transition-all cursor-pointer" >
               Subscribe
             </button>
           </div>
         </div>
-      </header>
-
-      {/* Category Navigation */}
-      <nav className="container mx-auto py-8 overflow-x-auto">
-        <div className="flex justify-center space-x-4">
-          {categories.map((category) => (
-            <button
-              key={category.name}
-              onClick={() => setActiveCategory(category.name)}
-              className={`flex items-center space-x-2 px-4 py-1 rounded-full transition-all ${
-                activeCategory === category.name 
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' 
-                  : 'bg-white/10 text-gray-300 hover:bg-white/20'
-              }`}
-            >
-              {category.icon}
-              <span>{category.name}</span>
-            </button>
-          ))}
+      </header> 
+ 
+      {/* Category Navigation */}   
+        <div className="container mx-auto py-8">
+          <div className='flex justify-center'>
+            <div className='w-11/12 sm:w-80'>
+              <div
+                className="group inline-block rounded-md bg-gradient-to-r from-blue-500 to-purple-600   hover:from-blue-600 hover:to-purple-700 transition-all cursor-pointer w-full" 
+              >
+                <Link to='/articles'>
+                  <div
+                    className="flex justify-center space-x-4 rounded-full px-8 py-3 text-sm font-medium group-hover:bg-transparent"
+                  >
+                    <Cpu className="w-6 h-6" />
+                    <p>All Articles</p>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-      </nav>
 
+       
       {/* Featured Articles */}
       <section className="container mx-auto py-16">
         <h2 className="text-3xl font-bold mb-10 text-center">Featured</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {featuredArticles.map((article) => (
-            <div 
-              key={article.id} 
-              className="bg-white/10 rounded-xl overflow-hidden shadow-2xl hover:scale-105 transition-transform"
-            >
-              <img 
-                src={article.imageUrl} 
-                alt={article.title} 
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-6">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm">
-                    {article.category}
-                  </span>
-                  <span className="text-gray-400 text-sm">{article.date}</span>
-                </div>
-                <h3 className="text-2xl font-bold mb-4">{article.title}</h3>
-                <p className="text-gray-300 mb-6">{article.excerpt}</p>
-                <div className="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
-                  <span><Link to={`/article/${article.id}`}>Read More</Link></span>
-                  <ChevronRight className="w-5 h-5" />
+        <div className="overflow-x-auto no-scrollbar">
+          <div className='inline-flex space-x-8 pb-4'>
+            {featuredArticles.map((article) => (
+              <div 
+                key={article.id} 
+                className="w-80 flex-shrink-0 bg-white/10 rounded-xl overflow-hidden shadow-2xl hover:scale-105 transition-transform"
+              >
+                <img 
+                  src={article.imageUrl} 
+                  alt={article.title} 
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-sm">
+                      {article.category}
+                    </span>
+                    <span className="text-gray-400 text-sm">{article.date}</span>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4">{article.title}</h3>
+                  <p className="text-gray-300 mb-6">{article.excerpt}</p>
+                  <div className="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
+                    <span><Link to={`/article/${article.id}`}>Read More</Link></span>
+                    <ChevronRight className="w-5 h-5" />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 

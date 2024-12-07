@@ -2,7 +2,8 @@ import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 const Home = lazy(() => import('./views/Home'));
-const ArticleRead = lazy(() => import('./views/Article'));
+const ArticleRead = lazy(() => import('./views/Read'));
+const Articles = lazy(() =>  import('./views/Articles'));
 
 const RoutesConfig: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const RoutesConfig: React.FC = () => {
     </div>}> 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/articles" element={<Articles />} />
         <Route path="/article/:id" element={<ArticleRead />} />
       </Routes>
     </Suspense>
