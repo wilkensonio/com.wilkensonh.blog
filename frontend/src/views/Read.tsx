@@ -2,6 +2,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useAppSelector } from '../redux/Hook';
 import { Clock, User, Share2, ArrowLeft } from 'lucide-react'; 
+import Footer from './Footer';
 
 const ArticlePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();  
@@ -61,7 +62,7 @@ const ArticlePage: React.FC = () => {
       </header>
 
       {/* Article Content */}
-      <article className="container mx-auto max-w-4xl py-16 px-4">
+      <article className="container mx-auto max-w-4xl py-16 px-4 min-h-80">
         {article.content && article.content.map((block, index) => {
           switch(block.type) {
             case 'paragraph':
@@ -97,20 +98,24 @@ const ArticlePage: React.FC = () => {
         })}
 
         {/* Share and Navigation */}
-        <div className="mt-12 flex justify-between items-center">
+        <div className="mt-12 flex justify-between items-center mb-10">
           <button className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
             <ArrowLeft className="w-5 h-5" />
-            <span> <Link to='/'> Back to Blog </Link></span>
+            <span className='bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-800'> <Link to='/'> Go Back </Link></span>
           </button>
           <div className="flex items-center space-x-4">
-            <span className="text-gray-400">Share:</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-800">Share:</span>
             <button className="text-blue-400 hover:text-blue-300">
               <Share2 className="w-6 h-6" />
             </button>
           </div>
         </div>
       </article>
+      <div>
+        <Footer />
+      </div>
     </div>
+    
   );
 };
 
