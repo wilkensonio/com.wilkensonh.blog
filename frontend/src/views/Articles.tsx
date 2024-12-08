@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ChevronRight, Cpu, Code, Zap, Braces } from 'lucide-react';
+import { Search, ChevronRight, ArrowLeft, Cpu, ChartNoAxesCombined, BrainCircuit, Binary, Braces } from 'lucide-react';
 
 // Article interface
 interface Article {
@@ -37,7 +37,7 @@ const sampleArticles: Article[] = [
     category: 'Deep Learning',
     imageUrl: '/assets/default-card-img.jpg',
     readTime: '7 min read',
-    tags: ['Ethics', 'AI', 'Technology']
+    tags: ['Deep Learning', 'AI', 'Technology']
   },
   {
     id: '3',
@@ -48,7 +48,7 @@ const sampleArticles: Article[] = [
     category: 'Deep Learning',
     imageUrl: '/assets/default-card-img.jpg',
     readTime: '7 min read',
-    tags: ['Ethics', 'AI', 'Technology']
+    tags: ['Deep Learning', 'AI', 'Technology']
   },
   {
     id: '4',
@@ -59,7 +59,7 @@ const sampleArticles: Article[] = [
     category: 'Deep Learning',
     imageUrl: '/assets/default-card-img.jpg',
     readTime: '7 min read',
-    tags: ['Ethics', 'AI', 'Technology']
+    tags: ['Deep Learning', 'AI', 'Technology']
   },
   {
     id: '5',
@@ -158,12 +158,12 @@ const Articles: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const articlesPerPage = 6;
 
-  // Categories
+  // Categories<ChartNoAxesCombined />
   const categories = [
     { name: 'All', icon: <Cpu className="w-6 h-6" /> },
-    { name: 'Machine Learning', icon: <Zap className="w-6 h-6" /> },
-    { name: 'Data Science', icon: <Code className="w-6 h-6" /> },
-    { name: 'Deep Learning', icon: <Zap className="w-6 h-6" /> },
+    { name: 'Machine Learning', icon: <Binary className="w-6 h-6" /> }, 
+    { name: 'Data Science', icon: <ChartNoAxesCombined className="w-6 h-6"/> },
+    { name: 'Deep Learning', icon: <BrainCircuit className="w-6 h-6" /> },
     { name: 'Algorithms', icon: <Braces className="w-6 h-6" /> }
   ];
 
@@ -188,9 +188,17 @@ const Articles: React.FC = () => {
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <header className="text-center mb-12">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-            Kadeeno Pulse
-          </h1>
+          <Link to='/'>
+            <h1 className="flex items-center justify-center text-5xl md:text-7xl font-bold mb-6 
+                bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 whitespace-nowrap">
+                <ArrowLeft 
+                  size={48}   
+                   color='#6366f1'
+                /> 
+                Kadeeno Pulse 
+            </h1>
+          </Link>
+        
           <p className="text-xl md:text-2xl mb-10 text-gray-200">
             Explore in-depth insights, cutting-edge research, and thought-provoking perspectives in artificial intelligence.
           </p>
@@ -215,7 +223,7 @@ const Articles: React.FC = () => {
           </div>
 
           {/* Category Navigation */}
-          <div className="flex justify-center space-x-4 mb-12">
+          <div className="flex flex-nowrap overflow-x-auto md:flex-wrap md:justify-center space-x-4 mb-12 scrollbar-hide">
             {categories.map((category) => (
               <button
                 key={category.name}
@@ -224,7 +232,7 @@ const Articles: React.FC = () => {
                   setCurrentPage(1);
                 }}
                 className={`
-                  flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all
+                  flex-shrink-0 flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all
                   ${activeCategory === category.name 
                     ? 'bg-gradient-to-r from-blue-500 to-purple-600' 
                     : 'bg-white/10 hover:bg-white/20'}
