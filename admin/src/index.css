@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.icon-gradient {
+  stroke: transparent;
+  background: linear-gradient(to right, #60a5fa, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(to right, #60a5fa, #8b5cf6);
+}

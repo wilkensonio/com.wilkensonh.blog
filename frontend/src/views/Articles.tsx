@@ -185,19 +185,24 @@ const Articles: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
-      <div className="container mx-auto px-4 py-12">
-        {/* Header */}
-        <header className="text-center mb-12">
+      <div className="container mx-auto px-4 py-12 bg-fixed">
+        {/* Header */} 
+        <header className="text-center mb-12"> 
           <Link to='/'>
-            <h1 className="flex items-center justify-center text-5xl md:text-7xl font-bold mb-6 
-                bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 whitespace-nowrap">
-                <ArrowLeft 
-                  size={48}   
-                   color='#6366f1'
-                /> 
-                Kadeeno Pulse 
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 underline
+                bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 whitespace-nowrap"> 
+                <span className='underline'>Kadeeno Pulse</span>
             </h1>
           </Link>
+
+          <div className='flex jusitfy-center items-center'>
+            {/* <ArrowLeft 
+              size={48}   
+              color='#6366f1'
+            />  */}
+            
+          {/* Go Back */}
+        </div>
         
           <p className="text-xl md:text-2xl mb-10 text-gray-200">
             Explore in-depth insights, cutting-edge research, and thought-provoking perspectives in artificial intelligence.
@@ -224,6 +229,7 @@ const Articles: React.FC = () => {
 
           {/* Category Navigation */}
           <div className="flex flex-nowrap overflow-x-auto md:flex-wrap md:justify-center space-x-4 mb-12 scrollbar-hide">
+            
             {categories.map((category) => (
               <button
                 key={category.name}

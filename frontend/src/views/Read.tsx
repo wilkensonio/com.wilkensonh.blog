@@ -101,10 +101,10 @@ const ArticlePage: React.FC = () => {
         <div className="mt-12 flex justify-between items-center mb-10">
           <button className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
             <ArrowLeft className="w-5 h-5" />
-            <span className='bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-800'> <Link to='/'> Go Back </Link></span>
+            <span className='bg-clip-text text-transparent text-white'> <Link to='/'> Go Back </Link></span>
           </button>
           <div className="flex items-center space-x-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-800">Share:</span>
+            <span className="bg-clip-text text-transparent text-white">Share:</span>
             <button className="text-blue-400 hover:text-blue-300">
               <Share2 className="w-6 h-6" />
             </button>
