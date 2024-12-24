@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 import React, { useState, useRef } from 'react';
 import { 
   PlusCircle, 
@@ -151,8 +151,12 @@ const Editor: React.FC<BlogPostEditorProps> = ({
 
 
   return (
-    <> 
-      <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg pt-4 mt-4 mb-11">
+    <>  
+      <div className="max-w-4xl mx-auto p-6 bg-slate-50 shadow-md rounded-lg pt-4 mt-4 mb-11">
+        <div className='flex justify-end mb-4 gap-3'>
+          <Link to='/signout' className='bg-purple-300 px-1 hover:bg-purple-600'> Signout </Link>
+          <Link to='/articles' className='bg-purple-300 px-1 hover:bg-purple-600'> Articles </Link>
+        </div>
         {/* Title Input */}
         <div className="mb-4">
           <input

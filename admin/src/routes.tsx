@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 const Editor = lazy(() => import('./components/Editor'));
 const Login = lazy(() => import('./components/Login'));
 const Signup = lazy(() =>  import('./components/Signup'));
+const Article = lazy(() => import('./components/Articles'));
 
 const handleEditorSubmit = (post: any) => {
   console.log('Post submitted:', post);
@@ -18,9 +19,10 @@ const RoutesConfig: React.FC = () => {
       </div>
     </div>}> 
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/articles" element={<Editor onSubmit={handleEditorSubmit} />} />
+        <Route path="/" element={<Editor onSubmit={handleEditorSubmit} />} />
+        <Route path="/articles" element={<Article/>}  />
+        <Route path="/article-editor" element={<Editor onSubmit={handleEditorSubmit} />} />
+        <Route path="/signin" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </Suspense>
