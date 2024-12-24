@@ -19,7 +19,7 @@ function App(): JSX.Element {
             <Routes> 
               <Route path="/*" element={<RoutesConfig />}/> 
             </Routes>
-            </Suspense> 
+          </Suspense> 
         </Router>
        
   )
