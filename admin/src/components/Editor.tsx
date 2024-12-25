@@ -38,6 +38,14 @@ interface BlogPostEditorProps {
   onSubmit: (post: BlogPost) => void;
 }
 
+function formatDate(date:Date): string {
+  const d = new Date(date);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0"); // Add leading zero
+  const day = String(d.getDate()).padStart(2, "0"); // Add leading zero
+  return `${year}-${month}-${day}`;
+}
+
 const Editor: React.FC<BlogPostEditorProps> = ({ 
   initialPost = {}, 
   onSubmit 
@@ -46,7 +54,7 @@ const Editor: React.FC<BlogPostEditorProps> = ({
   const [title, setTitle] = useState(initialPost.title || '');
   const [excerpt, setExcerpt] = useState(initialPost.excerpt || '');
   const [author, setAuthor] = useState(initialPost.author || '');
-  const [date, setDate] = useState(initialPost.date || new Date().toLocaleDateString());
+  const [date, setDate] = useState(initialPost.date || formatDate(new Date()));
   const [content, setContent] = useState<ContentBlock[]>(
     initialPost.content || []
   );
@@ -148,14 +156,20 @@ const Editor: React.FC<BlogPostEditorProps> = ({
 
     onSubmit(post);
   };
+ 
 
 
   return (
     <>  
       <div className="max-w-4xl mx-auto p-6 bg-slate-50 shadow-md rounded-lg pt-4 mt-4 mb-11">
-        <div className='flex justify-end mb-4 gap-3'>
-          <Link to='/signout' className='bg-purple-300 px-1 hover:bg-purple-600'> Signout </Link>
-          <Link to='/articles' className='bg-purple-300 px-1 hover:bg-purple-600'> Articles </Link>
+        <div className='flex justify-between '>
+          <div className='text-2xl font-bold text-gray-800 mb-4'>
+            New or Edit  articles
+          </div>
+          <div className=' mb-4 gap-3'>
+            <Link to='/signout' className='bg-purple-300 px-1 hover:bg-purple-600'> Signout </Link>
+            <Link to='/articles' className='bg-purple-300 px-1 hover:bg-purple-600'> Articles </Link>
+          </div>
         </div>
         {/* Title Input */}
         <div className="mb-4">
@@ -175,11 +189,17 @@ const Editor: React.FC<BlogPostEditorProps> = ({
             <div className="pl-2 text-gray-500"><User size={20} /></div>
             <input
               type="text"
+              list='titles'
               placeholder="Author Name"
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
               className="w-full p-2 focus:outline-none"
             />
+            <datalist id='titles'>
+              <option value="John Absolu, Ph.D"/> 
+              <option value="Wilkenson Hilarion"/> 
+              <option value="Dr. Altema"/> 
+            </datalist>
           </div>
 
           {/* Date Input */}
@@ -222,11 +242,22 @@ const Editor: React.FC<BlogPostEditorProps> = ({
         <div className="flex space-x-2 mb-4">
           <input
             type="text"
+            list='tags'
             placeholder="Add Tag"
             value={newTag}
             onChange={(e) => setNewTag(e.target.value)}
             className="flex-grow border-2 border-gray-300 rounded p-2 focus:outline-none focus:border-blue-500"
           />
+          <datalist id='tags'>
+            <option value="Machine Learning"/>
+            <option value="Deep Learning"/>
+            <option value="Algorithms"/>
+            <option value="Data Science"/>
+            <option value="Artificial Intelligence"/>
+            <option value="Ethics"/>
+            <option value="Other"/>
+          </datalist>
+          
           <button 
             onClick={() => {
               if (newTag && !tags.includes(newTag)) {
@@ -401,11 +432,7 @@ const Editor: React.FC<BlogPostEditorProps> = ({
           </div>
           <div className="chat-body p-3 h-48 overflow-auto text-wrap">
             <p className="text-gray-600 pb-2 google-gemini-text">Hello! How can I assist you?</p>
-            <p className=''>adfadfdfad fadsfadsfadsfadsfadsf adsfdasfadsfadfdasfdsfasd 
-              adfadfdfadfadsfadsfadsfadsfadsf adfadfdfadfadsfadsfadsfadsfadsf
-              adfadfdfadfadsfadsfadsfadsfadsf adfadfdfadfadsfadsfadsfadsfadsf
-              adfadfdfadfadsfadsfadsfadsfadsf adfadfdfadfadsfadsfadsfadsfadsf
-              adfadfdfadfadsfadsfadsfadsfadsf adfadfdfadfadsfadsfadsfadsfadsf</p>
+            <p className=''></p>
             
           </div>
           <div className="chat-footer flex items-center p-3 border-t">

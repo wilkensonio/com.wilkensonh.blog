@@ -22,9 +22,8 @@ function Signup() {
               />
               <datalist id='titles'>
                 <option value="Johnson Absolu, Ph.D" /> 
-                <option value="Altema" /> 
-                <option value="Antoinne" /> 
-                <option value="Samara" /> 
+                <option value="Wilkenson Hilarion" /> 
+                <option value="Sylvester Stallone" />
               </datalist>
             </div>
             <div>
