@@ -26,5 +26,5 @@ venv
 **.env
 .env
 
-frontend/.env
+blog/.env
 backend/.env

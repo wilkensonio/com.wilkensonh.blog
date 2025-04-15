@@ -161,7 +161,7 @@ const  LandingPage: React.FC = () => {
           <div className="flex justify-center space-x-4">
             <input 
               type="email" 
-              placeholder="Subscribe for the latest updates" 
+              placeholder="Subscribe"
               className="px-4 py-3 rounded-l-lg w-full max-w-md bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-gray-300"
             />
             <button className="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-r-lg hover:from-blue-600 hover:to-purple-700 transition-all cursor-pointer" >
