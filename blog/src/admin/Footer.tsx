@@ -1,7 +1,5 @@
 
 
-
-
 function Footer() {
     return (
       
