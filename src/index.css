@@ -9,13 +9,3 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-/* subscribe form  */
-@layer utilities {
-  .subscribe__input {
-    @apply block p-2.5 w-full z-20 text-sm text-white rounded-e-lg border-s-2 border border-purple-500 dark:focus:ring-purple-800 dark:bg-gray-700 dark:placeholder-gray-400;
-  }
-  .subscribe__input:focus {
-    @apply outline-none ring-purple-500;
-  }
-}
