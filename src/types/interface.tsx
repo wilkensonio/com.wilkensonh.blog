@@ -2,7 +2,7 @@ import { JSX } from "react/jsx-runtime";
 
 export interface Article {
   map(arg0: (article: any) => JSX.Element): import("react").ReactNode;
-  id: number;
+  id: string;
   title: string;
   excerpt: string;
   author: string;
@@ -15,6 +15,18 @@ export interface Article {
   tags: string[];
 }
 
+export interface ArticleList {
+  id: string;
+  title: string;
+  excerpt: string;
+  author: string;
+  date: string;
+  category: string;
+  imageUrl: string;
+  readTime: string;
+  tags: string[];
+}
+
 export interface articleState {
   featuredArticles: Article[];
   latestArticles: Article[];
@@ -23,4 +35,10 @@ export interface articleState {
 
 export interface FeaturedArticle {
   featuredArticles: Article[];
+}
+
+export interface ProtectedRouteProps {
+  isAuthenticated: boolean;
+  redirectPath?: string;
+  children: React.ReactElement;
 }

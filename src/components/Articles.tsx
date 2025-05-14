@@ -1,220 +1,240 @@
-import React, { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
-import { Search, ChevronRight, ArrowLeft, Cpu, ChartNoAxesCombined, BrainCircuit, Binary, Braces } from 'lucide-react';
+import React, { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
+import {
+  Search,
+  ChevronRight,
+  Cpu,
+  ChartNoAxesCombined,
+  BrainCircuit,
+  Binary,
+  Braces,
+} from "lucide-react";
 
-// Article interface
-interface Article {
-  id: string;
-  title: string;
-  excerpt: string;
-  author: string;
-  date: string;
-  category: string;
-  imageUrl: string;
-  readTime: string;
-  tags: string[];
-}
+import { ArticleList } from "../types/interface";
 
 // Sample articles data
-const sampleArticles: Article[] = [
+const sampleArticles: ArticleList[] = [
   {
-    id: '1',
-    title: 'The Future of Large Language Models',
-    excerpt: 'Exploring the transformative potential of advanced AI language technologies and their impact on global communication.',
-    author: 'Dr. Emily Chen',
-    date: 'May 15, 2024',
-    category: 'Machine Learning',
-    imageUrl: '/assets/img.jpg',
-    readTime: '5 min read',
-    tags: ['AI', 'Machine Learning', 'NLP']
+    id: "1",
+    title: "The Future of Large Language Models",
+    excerpt:
+      "Exploring the transformative potential of advanced AI language technologies and their impact on global communication.",
+    author: "Dr. Emily Chen",
+    date: "May 15, 2024",
+    category: "Machine Learning",
+    imageUrl: "/assets/img.jpg",
+    readTime: "5 min read",
+    tags: ["AI", "Machine Learning", "NLP"],
   },
   {
-    id: '2',
-    title: 'Ethical AI: Navigating the Complex Landscape',
-    excerpt: 'A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.',
-    author: 'Michael Rodriguez',
-    date: 'April 22, 2024',
-    category: 'Deep Learning',
-    imageUrl: '/assets/default-card-img.jpg',
-    readTime: '7 min read',
-    tags: ['Deep Learning', 'AI', 'Technology']
+    id: "2",
+    title: "Ethical AI: Navigating the Complex Landscape",
+    excerpt:
+      "A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.",
+    author: "Michael Rodriguez",
+    date: "April 22, 2024",
+    category: "Deep Learning",
+    imageUrl: "/assets/default-card-img.jpg",
+    readTime: "7 min read",
+    tags: ["Deep Learning", "AI", "Technology"],
   },
   {
-    id: '3',
-    title: 'Ethical AI: Navigating the Complex Landscape',
-    excerpt: 'A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.',
-    author: 'Michael Rodriguez',
-    date: 'April 22, 2024',
-    category: 'Deep Learning',
-    imageUrl: '/assets/default-card-img.jpg',
-    readTime: '7 min read',
-    tags: ['Deep Learning', 'AI', 'Technology']
+    id: "3",
+    title: "Ethical AI: Navigating the Complex Landscape",
+    excerpt:
+      "A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.",
+    author: "Michael Rodriguez",
+    date: "April 22, 2024",
+    category: "Deep Learning",
+    imageUrl: "/assets/default-card-img.jpg",
+    readTime: "7 min read",
+    tags: ["Deep Learning", "AI", "Technology"],
   },
   {
-    id: '4',
-    title: 'Ethical AI: Navigating the Complex Landscape',
-    excerpt: 'A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.',
-    author: 'Michael Rodriguez',
-    date: 'April 22, 2024',
-    category: 'Deep Learning',
-    imageUrl: '/assets/default-card-img.jpg',
-    readTime: '7 min read',
-    tags: ['Deep Learning', 'AI', 'Technology']
+    id: "4",
+    title: "Ethical AI: Navigating the Complex Landscape",
+    excerpt:
+      "A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.",
+    author: "Michael Rodriguez",
+    date: "April 22, 2024",
+    category: "Deep Learning",
+    imageUrl: "/assets/default-card-img.jpg",
+    readTime: "7 min read",
+    tags: ["Deep Learning", "AI", "Technology"],
   },
   {
-    id: '5',
-    title: 'Ethical AI: Navigating the Complex Landscape',
-    excerpt: 'A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.',
-    author: 'Michael Rodriguez',
-    date: 'April 22, 2024',
-    category: 'Deep Learning',
-    imageUrl: '/assets/default-card-img.jpg',
-    readTime: '7 min read',
-    tags: ['Ethics', 'AI', 'Technology']
+    id: "5",
+    title: "Ethical AI: Navigating the Complex Landscape",
+    excerpt:
+      "A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.",
+    author: "Michael Rodriguez",
+    date: "April 22, 2024",
+    category: "Deep Learning",
+    imageUrl: "/assets/default-card-img.jpg",
+    readTime: "7 min read",
+    tags: ["Ethics", "AI", "Technology"],
   },
   {
-    id: '6',
-    title: 'Ethical AI: Navigating the Complex Landscape',
-    excerpt: 'A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.',
-    author: 'Michael Rodriguez',
-    date: 'April 22, 2024',
-    category: 'Deep Learning',
-    imageUrl: '/assets/default-card-img.jpg',
-    readTime: '7 min read',
-    tags: ['Ethics', 'AI', 'Technology']
+    id: "6",
+    title: "Ethical AI: Navigating the Complex Landscape",
+    excerpt:
+      "A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.",
+    author: "Michael Rodriguez",
+    date: "April 22, 2024",
+    category: "Deep Learning",
+    imageUrl: "/assets/default-card-img.jpg",
+    readTime: "7 min read",
+    tags: ["Ethics", "AI", "Technology"],
   },
   {
-    id: '7',
-    title: 'Ethical AI: Navigating the Complex Landscape',
-    excerpt: 'A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.',
-    author: 'Michael Rodriguez',
-    date: 'April 22, 2024',
-    category: 'Deep Learning',
-    imageUrl: '/assets/default-card-img.jpg',
-    readTime: '7 min read',
-    tags: ['Ethics', 'AI', 'Technology']
+    id: "7",
+    title: "Ethical AI: Navigating the Complex Landscape",
+    excerpt:
+      "A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.",
+    author: "Michael Rodriguez",
+    date: "April 22, 2024",
+    category: "Deep Learning",
+    imageUrl: "/assets/default-card-img.jpg",
+    readTime: "7 min read",
+    tags: ["Ethics", "AI", "Technology"],
   },
   {
-    id: '8',
-    title: 'Ethical AI: Navigating the Complex Landscape',
-    excerpt: 'A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.',
-    author: 'Michael Rodriguez',
-    date: 'April 22, 2024',
-    category: 'Deep Learning',
-    imageUrl: '/assets/default-card-img.jpg',
-    readTime: '7 min read',
-    tags: ['Ethics', 'AI', 'Technology']
+    id: "8",
+    title: "Ethical AI: Navigating the Complex Landscape",
+    excerpt:
+      "A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.",
+    author: "Michael Rodriguez",
+    date: "April 22, 2024",
+    category: "Deep Learning",
+    imageUrl: "/assets/default-card-img.jpg",
+    readTime: "7 min read",
+    tags: ["Ethics", "AI", "Technology"],
   },
   {
-    id: '9',
-    title: 'Ethical AI: Navigating the Complex Landscape',
-    excerpt: 'A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.',
-    author: 'Michael Rodriguez',
-    date: 'April 22, 2024',
-    category: 'Deep Learning',
-    imageUrl: '/assets/default-card-img.jpg',
-    readTime: '7 min read',
-    tags: ['Ethics', 'AI', 'Technology']
+    id: "9",
+    title: "Ethical AI: Navigating the Complex Landscape",
+    excerpt:
+      "A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.",
+    author: "Michael Rodriguez",
+    date: "April 22, 2024",
+    category: "Deep Learning",
+    imageUrl: "/assets/default-card-img.jpg",
+    readTime: "7 min read",
+    tags: ["Ethics", "AI", "Technology"],
   },
   {
-    id: '10',
-    title: 'Ethical AI: Navigating the Complex Landscape',
-    excerpt: 'A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.',
-    author: 'Michael Rodriguez',
-    date: 'April 22, 2024',
-    category: 'Deep Learning',
-    imageUrl: '/assets/default-card-img.jpg',
-    readTime: '7 min read',
-    tags: ['Ethics', 'AI', 'Technology']
+    id: "10",
+    title: "Ethical AI: Navigating the Complex Landscape",
+    excerpt:
+      "A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.",
+    author: "Michael Rodriguez",
+    date: "April 22, 2024",
+    category: "Deep Learning",
+    imageUrl: "/assets/default-card-img.jpg",
+    readTime: "7 min read",
+    tags: ["Ethics", "AI", "Technology"],
   },
   {
-    id: '11',
-    title: 'Ethical AI: Navigating the Complex Landscape',
-    excerpt: 'A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.',
-    author: 'Michael Rodriguez',
-    date: 'April 22, 2024',
-    category: 'Deep Learning',
-    imageUrl: '/assets/default-card-img.jpg',
-    readTime: '7 min read',
-    tags: ['Ethics', 'AI', 'Technology']
+    id: "11",
+    title: "Ethical AI: Navigating the Complex Landscape",
+    excerpt:
+      "A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.",
+    author: "Michael Rodriguez",
+    date: "April 22, 2024",
+    category: "Deep Learning",
+    imageUrl: "/assets/default-card-img.jpg",
+    readTime: "7 min read",
+    tags: ["Ethics", "AI", "Technology"],
   },
   {
-    id: '12',
-    title: 'Ethical AI: Navigating the Complex Landscape',
-    excerpt: 'A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.',
-    author: 'Michael Rodriguez',
-    date: 'April 22, 2024',
-    category: 'Deep Learning',
-    imageUrl: '/assets/default-card-img.jpg',
-    readTime: '7 min read',
-    tags: ['Ethics', 'AI', 'Technology']
+    id: "12",
+    title: "Ethical AI: Navigating the Complex Landscape",
+    excerpt:
+      "A comprehensive analysis of the moral and philosophical challenges in developing responsible artificial intelligence.",
+    author: "Michael Rodriguez",
+    date: "April 22, 2024",
+    category: "Deep Learning",
+    imageUrl: "/assets/default-card-img.jpg",
+    readTime: "7 min read",
+    tags: ["Ethics", "AI", "Technology"],
   },
-  
 ];
 
-const Articles: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState<string>('');
-  const [activeCategory, setActiveCategory] = useState<string>('All');
+const Articles: React.FC = (): JSX.Element => {
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [activeCategory, setActiveCategory] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const articlesPerPage = 6;
+  const articlesPerPage: number = 6;
 
   // Categories<ChartNoAxesCombined />
   const categories = [
-    { name: 'All', icon: <Cpu className="w-6 h-6" /> },
-    { name: 'Machine Learning', icon: <Binary className="w-6 h-6" /> }, 
-    { name: 'Data Science', icon: <ChartNoAxesCombined className="w-6 h-6"/> },
-    { name: 'Deep Learning', icon: <BrainCircuit className="w-6 h-6" /> },
-    { name: 'Algorithms', icon: <Braces className="w-6 h-6" /> }
+    { name: "All", icon: <Cpu className="w-6 h-6" /> },
+    { name: "Machine Learning", icon: <Binary className="w-6 h-6" /> },
+    { name: "Data Science", icon: <ChartNoAxesCombined className="w-6 h-6" /> },
+    { name: "Deep Learning", icon: <BrainCircuit className="w-6 h-6" /> },
+    { name: "Algorithms", icon: <Braces className="w-6 h-6" /> },
   ];
 
-  // Filtering and searching logic
-  const filteredArticles = useMemo(() => {
-    return sampleArticles.filter(article => 
-      (activeCategory === 'All' || article.category === activeCategory) &&
-      (article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      article.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()))
+  /**
+   * Filter articles based on search term and active category
+   * @returns {ArticleList[]} Filtered articles
+   * @description This function filters the articles based on the search term and the active category.
+   * It checks if the article's title, tags, or excerpt includes the search
+   * Term and if the article's category matches the active category.
+   * The filtered articles are then used for pagination.
+   */
+  const filteredArticles: ArticleList[] = useMemo(() => {
+    return sampleArticles.filter(
+      (article) =>
+        (activeCategory === "All" || article.category === activeCategory) &&
+        (article.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          article.tags?.some((tag) =>
+            tag.toLowerCase().includes(searchTerm.toLowerCase())
+          ) ||
+          article.excerpt?.toLowerCase().includes(searchTerm.toLowerCase()))
     );
   }, [searchTerm, activeCategory]);
 
-  // Pagination logic
-  const paginatedArticles = useMemo(() => {
-    const startIndex = (currentPage - 1) * articlesPerPage;
+  const paginatedArticles: ArticleList[] = useMemo(() => {
+    const startIndex: number = (currentPage - 1) * articlesPerPage;
     return filteredArticles.slice(startIndex, startIndex + articlesPerPage);
   }, [filteredArticles, currentPage]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
       <div className="container mx-auto px-4 py-12 bg-fixed">
-        {/* Header */} 
-        <header className="text-center mb-12"> 
-          <Link to='/'>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 underline
-                bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 whitespace-nowrap"> 
-                <span className='underline'>Kadeeno Pulse</span>
+        {/* Header */}
+        <header className="text-center mb-12">
+          <Link to="/">
+            <h1
+              className="text-5xl md:text-7xl font-bold mb-6 underline
+                bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 whitespace-nowrap"
+            >
+              <span className="underline">Kadeeno Pulse</span>
             </h1>
           </Link>
 
-          <div className='flex jusitfy-center items-center'>
+          <div className="flex jusitfy-center items-center">
             {/* <ArrowLeft 
               size={48}   
               color='#6366f1'
             />  */}
-            
-          {/* Go Back */}
-        </div>
-        
+
+            {/* Go Back */}
+          </div>
+
           <p className="text-xl md:text-2xl mb-10 text-gray-200">
-            Explore in-depth insights, cutting-edge research, and thought-provoking perspectives in artificial intelligence.
+            Explore in-depth insights, cutting-edge research, and
+            thought-provoking perspectives in artificial intelligence.
           </p>
 
           {/* Search Bar */}
           <div className="flex justify-center mb-12">
             <div className="w-full max-w-2xl">
               <div className="relative">
-                <input 
-                  type="text" 
-                  placeholder="Search by title, tags, or keywords" 
+                <input
+                  type="text"
+                  placeholder="Search by title, tags, or keywords"
                   value={searchTerm}
                   onChange={(e) => {
                     setSearchTerm(e.target.value);
@@ -229,7 +249,6 @@ const Articles: React.FC = () => {
 
           {/* Category Navigation */}
           <div className="flex flex-nowrap overflow-x-auto md:flex-wrap md:justify-center space-x-4 mb-12 scrollbar-hide">
-            
             {categories.map((category) => (
               <button
                 key={category.name}
@@ -239,9 +258,11 @@ const Articles: React.FC = () => {
                 }}
                 className={`
                   flex-shrink-0 flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all
-                  ${activeCategory === category.name 
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-600' 
-                    : 'bg-white/10 hover:bg-white/20'}
+                  ${
+                    activeCategory === category.name
+                      ? "bg-gradient-to-r from-blue-500 to-purple-600"
+                      : "bg-white/10 hover:bg-white/20"
+                  }
                 `}
               >
                 {category.icon}
@@ -254,13 +275,13 @@ const Articles: React.FC = () => {
         {/* Articles Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {paginatedArticles.map((article) => (
-            <div 
-              key={article.id} 
+            <div
+              key={article.id}
               className="bg-white/10 rounded-xl overflow-hidden shadow-2xl hover:scale-105 transition-transform"
             >
-              <img 
-                src={article.imageUrl} 
-                alt={article.title} 
+              <img
+                src={article.imageUrl}
+                alt={article.title}
                 className="w-full h-64 object-cover"
               />
               <div className="p-6">
@@ -272,11 +293,15 @@ const Articles: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold mb-4">{article.title}</h3>
                 <p className="text-gray-300 mb-6">{article.excerpt}</p>
-                
+
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-400">{article.readTime}</span>
+                  <span className="text-sm text-gray-400">
+                    {article.readTime}
+                  </span>
                   <div className="flex items-center text-blue-400 hover:text-blue-300 transition-colors">
-                    <Link to={`/article/${article.id}`} className="mr-2">Read More</Link>
+                    <Link to={`/article/${article.id}`} className="mr-2">
+                      Read More
+                    </Link>
                     <ChevronRight className="w-5 h-5" />
                   </div>
                 </div>
@@ -288,17 +313,19 @@ const Articles: React.FC = () => {
         {/* Pagination */}
         {filteredArticles.length > articlesPerPage && (
           <div className="flex justify-center mt-12 space-x-2">
-            {Array.from({ 
-              length: Math.ceil(filteredArticles.length / articlesPerPage) 
+            {Array.from({
+              length: Math.ceil(filteredArticles.length / articlesPerPage),
             }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentPage(index + 1)}
                 className={`
                   px-4 py-2 rounded-full transition-all
-                  ${currentPage === index + 1 
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' 
-                    : 'bg-white/10 text-gray-300 hover:bg-white/20'}
+                  ${
+                    currentPage === index + 1
+                      ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white"
+                      : "bg-white/10 text-gray-300 hover:bg-white/20"
+                  }
                 `}
               >
                 {index + 1}
@@ -310,8 +337,12 @@ const Articles: React.FC = () => {
         {/* No Results State */}
         {paginatedArticles.length === 0 && (
           <div className="text-center py-16">
-            <h4 className="text-3xl font-bold text-gray-300 mb-4">No Articles Found</h4>
-            <p className="text-lg text-gray-500">Try a different search or category</p>
+            <h4 className="text-3xl font-bold text-gray-300 mb-4">
+              No Articles Found
+            </h4>
+            <p className="text-lg text-gray-500">
+              Try a different search or category
+            </p>
           </div>
         )}
       </div>
