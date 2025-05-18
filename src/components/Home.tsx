@@ -22,7 +22,7 @@ const LandingPage: React.FC = () => {
 
   const featuredArticleData = [
     {
-      id: 1,
+      id: "1",
       title: "The Future of Generative AI",
       excerpt:
         "Exploring the transformative potential of large language models and their impact on various industries.",
@@ -51,7 +51,7 @@ const LandingPage: React.FC = () => {
       tags: ["Machine Learning", "AI Innovation", "Technology Trends"],
     },
     {
-      id: 2,
+      id: "2",
       title: "Ethical AI: Navigating the Complex Landscape",
       excerpt:
         "A deep dive into the moral considerations and responsible development of artificial intelligence.",
@@ -80,7 +80,7 @@ const LandingPage: React.FC = () => {
       // imageUrl: '/api/placeholder/800/400'
     },
     {
-      id: 3,
+      id: "3",
       title: "Ethical AI: Navigating the Complex Landscape",
       excerpt:
         "A deep dive into the moral considerations and responsible development of artificial intelligence.",
@@ -109,7 +109,7 @@ const LandingPage: React.FC = () => {
       // imageUrl: '/api/placeholder/800/400'
     },
     {
-      id: 4,
+      id: "4",
       title: "Ethical AI: Navigating the Complex Landscape",
       excerpt:
         "A deep dive into the moral considerations and responsible development of artificial intelligence.",
@@ -141,7 +141,7 @@ const LandingPage: React.FC = () => {
 
   const latestArticleData = [
     {
-      id: 5,
+      id: "5",
       title: "Neural Networks: Beyond the Basics",
       excerpt:
         "Advanced techniques in deep learning and neural network architectures.",
@@ -218,8 +218,7 @@ const LandingPage: React.FC = () => {
           </p>
           <SubscribeForm />
           <p className="text-gray-400 text-sm mt-12">
-            Subscribe to our newsletter for the latest updates and insights on
-            AI and technology. By subscribing, you agree to our{" "}
+            By subscribing to this newsletter you agree to the{" "}
             <Link
               to="/privacy-policy"
               className="text-blue-400 hover:text-blue-300 pr-2"

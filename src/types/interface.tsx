@@ -1,7 +1,4 @@
-import { JSX } from "react/jsx-runtime";
-
 export interface Article {
-  map(arg0: (article: any) => JSX.Element): import("react").ReactNode;
   id: string;
   title: string;
   excerpt: string;
