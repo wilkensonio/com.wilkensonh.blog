@@ -3,8 +3,12 @@ import { useAppSelector } from "../redux/Hook";
 import { Article } from "../types/interface";
 import { Clock, User, Share2, ArrowLeft } from "lucide-react";
 import Footer from "./Footer";
+import { useEffect } from "react";
 
 const ArticlePage: React.FC = () => {
+  const currentPageUrl = window.location.href;
+  const navigator = window.navigator;
+
   const { id } = useParams<{ id: string }>();
   const { featuredArticles, latestArticles } = useAppSelector(
     (state) => state.article
@@ -13,6 +17,10 @@ const ArticlePage: React.FC = () => {
   const article: Article | undefined = allArticles.find(
     (a) => a.id.toString() === id
   );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!article) {
     return (
@@ -23,6 +31,30 @@ const ArticlePage: React.FC = () => {
       </div>
     );
   }
+
+  const shareArticle = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: article.title,
+          text: article.excerpt,
+          url: currentPageUrl,
+        });
+      } catch (error) {
+        console.error("Error sharing article:", error);
+      }
+    } else {
+      navigator.clipboard
+        .writeText(currentPageUrl)
+        .then(() => {
+          alert("Article link copied to clipboard!");
+        })
+        .catch((error) => {
+          console.error("Error copying article link:", error);
+          alert("Failed to copy article link.");
+        });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
@@ -106,18 +138,17 @@ const ArticlePage: React.FC = () => {
 
         {/* Share or Navigation */}
         <div className="mt-12 flex justify-between items-center mb-10">
-          <button className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-            <span className="bg-clip-text text-transparent text-white">
-              {" "}
-              <Link to="/"> Go Back </Link>
-            </span>
-          </button>
+          <Link to="/articles">
+            <button className="flex items-center z-20  text-blue-400 hover:text-blue-300  bg-gray-900 p-2 rounded-full justify-center">
+              <ArrowLeft className="w-6 h-6" />
+            </button>
+          </Link>
           <div className="flex items-center space-x-4">
-            <span className="bg-clip-text text-transparent text-white">
-              Share:
-            </span>
-            <button className="text-blue-400 hover:text-blue-300">
+            <span className="bg-clip-text text-transparent text-white"></span>
+            <button
+              className="text-blue-400 hover:text-blue-300 bg-gray-800 p-2 rounded-full flex items-center justify-center "
+              onClick={shareArticle}
+            >
               <Share2 className="w-6 h-6" />
             </button>
           </div>
