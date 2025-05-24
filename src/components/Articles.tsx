@@ -167,8 +167,12 @@ const Articles: React.FC = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const articlesPerPage: number = 6;
 
-  // Categories<ChartNoAxesCombined />
-  const categories = [
+  /**
+   * Categories for filtering articles
+   * @type {Array<{ name: string; icon: JSX.Element }>}
+   * @description This array contains the categories for filtering articles.
+   */
+  const categories: Array<{ name: string; icon: JSX.Element }> = [
     { name: "All", icon: <Cpu className="w-6 h-6" /> },
     { name: "Machine Learning", icon: <Binary className="w-6 h-6" /> },
     { name: "Data Science", icon: <ChartNoAxesCombined className="w-6 h-6" /> },
@@ -208,7 +212,7 @@ const Articles: React.FC = (): JSX.Element => {
         <header className="text-center mb-12">
           <Link to="/">
             <h1
-              className="text-5xl md:text-7xl font-bold mb-6 underline
+              className="text-2xl md:text-4xl font-bold mb-6 underline
                 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 whitespace-nowrap"
             >
               <span className="underline">Kadeeno Pulse</span>
@@ -223,11 +227,6 @@ const Articles: React.FC = (): JSX.Element => {
 
             {/* Go Back */}
           </div>
-
-          <p className="text-xl md:text-2xl mb-10 text-gray-200">
-            Explore in-depth insights, cutting-edge research, and
-            thought-provoking perspectives in artificial intelligence.
-          </p>
 
           {/* Search Bar */}
           <div className="flex justify-center mb-12">
