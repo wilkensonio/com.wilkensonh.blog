@@ -6,7 +6,7 @@ export const FeaturedArticle: React.FC<FeaturedArticleProps> = ({
   featuredArticles,
 }) => {
   return (
-    <section className="container mx-auto py-16">
+    <section className="container mx-auto ">
       <h2 className="text-3xl font-bold mb-10 text-center">Featured</h2>
       <div className="overflow-x-auto no-scrollbar">
         <div className="inline-flex space-x-8 pb-4">

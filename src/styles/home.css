@@ -7,7 +7,7 @@
     @apply min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white;
   }
   .home__header {
-    @apply relative h-[70vh] flex flex-col justify-center items-center text-center px-4;
+    @apply relative h-[70vh] flex flex-col pt-10 text-center px-4;
   }
   /* .home__purple-gradient {
     @apply absolute inset-0 bg-gradient-to-r from-purple-600/30 to-blue-500/30 opacity-75 blur-3xl;
@@ -24,7 +24,7 @@
     @apply outline-none ring-purple-500;
   }
   .home__title {
-    @apply text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600;
+    @apply text-4xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600;
   }
   .home__subscribe-button {
     @apply absolute top-0 end-0 h-full p-2.5 text-sm font-medium   bg-purple-500  border border-purple-500;

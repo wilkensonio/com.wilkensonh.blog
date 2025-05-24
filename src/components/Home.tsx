@@ -211,11 +211,11 @@ const LandingPage: React.FC = () => {
 
         <div className="relative z-10 max-w-4xl mx-auto">
           <h1 className="home__title">Kadeeno Pulse</h1>
-          <p className="text-xl md:text-2xl mb-4 text-gray-200">
+          <p className="text-sm md:text-2xl mb-8 text-gray-200">
             Capturing the heartbeat of Artificial Intelligence (AI).
           </p>
           <SubscribeForm />
-          <p className="home__subscribe-text">
+          <p className="home__subscribe-text pt-10">
             By subscribing to this newsletter you agree to the{" "}
             <Link to="/privacy-policy" className="home__privacy-policy-link">
               Privacy Policy
@@ -226,23 +226,22 @@ const LandingPage: React.FC = () => {
             </Link>
           </p>
         </div>
-      </header>
-
-      {/* Category Navigation */}
-      <div className="container mx-auto">
-        <div className="flex justify-center">
-          <div className="w-11/12 sm:w-80">
-            <div className="home__category-nav">
-              <Link to="/articles">
-                <div className="home__all-articles-button-text">
-                  <Cpu className="w-6 h-5" />
-                  <p>All Articles</p>
-                </div>
-              </Link>
+        {/* Category Navigation */}
+        <div className="container pt-20">
+          <div className="flex justify-center">
+            <div className="w-11/12 sm:w-80">
+              <div className="home__category-nav">
+                <Link to="/articles">
+                  <div className="home__all-articles-button-text">
+                    <Cpu className="w-6 h-5" />
+                    <p>All Articles</p>
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Featured Articles */}
       <FeaturedArticle featuredArticles={featuredArticles} />
