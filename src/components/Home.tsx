@@ -211,7 +211,7 @@ const LandingPage: React.FC = () => {
 
         <div className="relative z-10 max-w-4xl mx-auto">
           <h1 className="home__title">Kadeeno Pulse</h1>
-          <p className="text-xl md:text-2xl mb-10 text-gray-200">
+          <p className="text-xl md:text-2xl mb-4 text-gray-200">
             Capturing the heartbeat of Artificial Intelligence (AI).
           </p>
           <SubscribeForm />
@@ -229,13 +229,13 @@ const LandingPage: React.FC = () => {
       </header>
 
       {/* Category Navigation */}
-      <div className="container mx-auto py-8">
+      <div className="container mx-auto">
         <div className="flex justify-center">
           <div className="w-11/12 sm:w-80">
             <div className="home__category-nav">
               <Link to="/articles">
                 <div className="home__all-articles-button-text">
-                  <Cpu className="w-6 h-6" />
+                  <Cpu className="w-6 h-5" />
                   <p>All Articles</p>
                 </div>
               </Link>

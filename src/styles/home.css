@@ -30,11 +30,11 @@
     @apply absolute top-0 end-0 h-full p-2.5 text-sm font-medium   bg-purple-500  border border-purple-500;
   }
   .home__category-nav-article {
-    @apply flex justify-center space-x-4 rounded-full px-8 py-3 text-sm font-medium group-hover:bg-transparent;
+    @apply flex justify-center space-x-4 rounded-full px-8 py-2 text-sm font-medium group-hover:bg-transparent;
   }
 
   .home__subscribe-text {
-    @apply text-gray-400 text-sm mt-12;
+    @apply text-gray-400 text-sm mt-4;
   }
 
   .home__privacy-policy-link,
@@ -43,6 +43,6 @@
   }
 
   .home__all-articles-button-text {
-    @apply flex justify-center space-x-4 rounded-full px-8 py-3 text-sm font-medium group-hover:bg-transparent;
+    @apply flex justify-center space-x-4 rounded-full py-2 text-sm font-medium group-hover:bg-transparent;
   }
 }
