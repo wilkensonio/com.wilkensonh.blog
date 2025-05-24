@@ -1,5 +1,3 @@
-import React from "react";
-
 export const SubscribeForm = () => {
   return (
     <form className="max-w-md mx-auto">

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/Hook";
 import { RootState } from "../redux/Store";
 import { setAllArticles } from "../redux/slices/ArticleSlice";
@@ -12,15 +12,13 @@ import Footer from "./Footer";
 import "../styles/home.css";
 
 const LandingPage: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
-
   const dispatch = useAppDispatch();
 
   const { featuredArticles, latestArticles } = useAppSelector(
     (state: RootState) => state.article
   );
 
-  const featuredArticleData = [
+  const featuredArticleData: Article[] = [
     {
       id: "1",
       title: "The Future of Generative AI",
@@ -139,7 +137,7 @@ const LandingPage: React.FC = () => {
     },
   ];
 
-  const latestArticleData = [
+  const latestArticleData: Article[] = [
     {
       id: "5",
       title: "Neural Networks: Beyond the Basics",
@@ -168,7 +166,7 @@ const LandingPage: React.FC = () => {
       tags: ["Machine Learning", "AI Innovation", "Technology Trends"],
     },
     {
-      id: 6,
+      id: "6",
       title: "AI in Healthcare: Revolutionizing Diagnosis",
       excerpt:
         "How artificial intelligence is transforming medical diagnostics and patient care.",
@@ -217,22 +215,15 @@ const LandingPage: React.FC = () => {
             Capturing the heartbeat of Artificial Intelligence (AI).
           </p>
           <SubscribeForm />
-          <p className="text-gray-400 text-sm mt-12">
+          <p className="home__subscribe-text">
             By subscribing to this newsletter you agree to the{" "}
-            <Link
-              to="/privacy-policy"
-              className="text-blue-400 hover:text-blue-300 pr-2"
-            >
+            <Link to="/privacy-policy" className="home__privacy-policy-link">
               Privacy Policy
             </Link>
             and{" "}
-            <Link
-              to="/term-of-use"
-              className="text-blue-400 hover:text-blue-300"
-            >
+            <Link to="/term-of-use" className="home__term-of-use-link">
               Term of use
             </Link>
-            .
           </p>
         </div>
       </header>
@@ -243,7 +234,7 @@ const LandingPage: React.FC = () => {
           <div className="w-11/12 sm:w-80">
             <div className="home__category-nav">
               <Link to="/articles">
-                <div className="flex justify-center space-x-4 rounded-full px-8 py-3 text-sm font-medium group-hover:bg-transparent">
+                <div className="home__all-articles-button-text">
                   <Cpu className="w-6 h-6" />
                   <p>All Articles</p>
                 </div>

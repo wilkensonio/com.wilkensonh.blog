@@ -32,4 +32,17 @@
   .home__category-nav-article {
     @apply flex justify-center space-x-4 rounded-full px-8 py-3 text-sm font-medium group-hover:bg-transparent;
   }
+
+  .home__subscribe-text {
+    @apply text-gray-400 text-sm mt-12;
+  }
+
+  .home__privacy-policy-link,
+  .home__term-of-use-link {
+    @apply text-blue-400 hover:text-blue-300 pr-2;
+  }
+
+  .home__all-articles-button-text {
+    @apply flex justify-center space-x-4 rounded-full px-8 py-3 text-sm font-medium group-hover:bg-transparent;
+  }
 }
