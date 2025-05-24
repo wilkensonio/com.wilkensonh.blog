@@ -138,19 +138,15 @@ const ArticlePage: React.FC = () => {
 
         {/* Share or Navigation */}
         <div className="mt-12 flex justify-between items-center mb-10">
-          <button className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-            <span className="bg-clip-text text-transparent text-white">
-              {" "}
-              <Link to="/"> Go Back </Link>
-            </span>
-          </button>
+          <Link to="/articles">
+            <button className="flex items-center z-20  text-blue-400 hover:text-blue-300  bg-gray-900 p-2 rounded-full justify-center">
+              <ArrowLeft className="w-6 h-6" />
+            </button>
+          </Link>
           <div className="flex items-center space-x-4">
-            <span className="bg-clip-text text-transparent text-white">
-              Share:
-            </span>
+            <span className="bg-clip-text text-transparent text-white"></span>
             <button
-              className="text-blue-400 hover:text-blue-300"
+              className="text-blue-400 hover:text-blue-300 bg-gray-800 p-2 rounded-full flex items-center justify-center "
               onClick={shareArticle}
             >
               <Share2 className="w-6 h-6" />
