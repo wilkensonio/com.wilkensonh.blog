@@ -13,7 +13,7 @@ export const FeaturedArticle: React.FC<FeaturedArticleProps> = ({
           {featuredArticles.map((article) => (
             <div
               key={article.id}
-              className="w-80 flex-shrink-0 bg-white/10 rounded-xl overflow-hidden shadow-2xl hover:scale-105 transition-transform"
+              className="max-w-72 flex-shrink-0 bg-white/10 rounded-xl overflow-hidden shadow-2xl hover:scale-105 transition-transform"
             >
               <img
                 src={article.imageUrl}

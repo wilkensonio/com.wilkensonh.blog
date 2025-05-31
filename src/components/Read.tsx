@@ -33,6 +33,8 @@ const ArticlePage: React.FC = () => {
   }
 
   const shareArticle = async () => {
+    console.log(navigator.platform);
+
     if (navigator.share) {
       try {
         await navigator.share({

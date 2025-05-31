@@ -215,7 +215,7 @@ const Articles: React.FC = (): JSX.Element => {
               className="text-2xl md:text-4xl font-bold mb-6 underline
                 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 whitespace-nowrap"
             >
-              <span className="underline">Kadeeno Pulse</span>
+              <span className="underline">Kadeeno AI Pulse</span>
             </h1>
           </Link>
 

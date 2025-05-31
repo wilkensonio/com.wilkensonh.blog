@@ -25,7 +25,7 @@ const LandingPage: React.FC = () => {
       excerpt:
         "Exploring the transformative potential of large language models and their impact on various industries.",
       author: "Dr. Elena Rodriguez",
-      date: "November 15, 2024",
+      date: "Nov 15, 2024",
       category: "Machine Learning",
       imageUrl: "/assets/img.jpg",
       heroImage: "/assets/img.jpg",
@@ -54,7 +54,7 @@ const LandingPage: React.FC = () => {
       excerpt:
         "A deep dive into the moral considerations and responsible development of artificial intelligence.",
       author: "Michael Chen",
-      date: "November 10, 2024",
+      date: "Nov 10, 2024",
       category: "Deap Learning",
       imageUrl: "/assets/default-card-img.jpg",
       heroImage: "/assets/default-card-img.jpg",
@@ -83,7 +83,7 @@ const LandingPage: React.FC = () => {
       excerpt:
         "A deep dive into the moral considerations and responsible development of artificial intelligence.",
       author: "Michael Chen",
-      date: "November 10, 2024",
+      date: "Nov 10, 2024",
       category: "Data Science",
       imageUrl: "/assets/default-card-img.jpg",
       heroImage: "/assets/default-card-img.jpg",
@@ -112,7 +112,7 @@ const LandingPage: React.FC = () => {
       excerpt:
         "A deep dive into the moral considerations and responsible development of artificial intelligence.",
       author: "Michael Chen",
-      date: "November 10, 2024",
+      date: "Nov 10, 2024",
       category: "Algorithms",
       imageUrl: "/assets/default-card-img.jpg",
       heroImage: "/assets/default-card-img.jpg",
@@ -144,7 +144,7 @@ const LandingPage: React.FC = () => {
       excerpt:
         "Advanced techniques in deep learning and neural network architectures.",
       author: "Sarah Kim",
-      date: "November 5, 2024",
+      date: "Nov 5, 2024",
       category: "Machine Learning",
       heroImage: "/assets/default-card-img.jpg",
       readTime: "5 min read",
@@ -171,7 +171,7 @@ const LandingPage: React.FC = () => {
       excerpt:
         "How artificial intelligence is transforming medical diagnostics and patient care.",
       author: "Dr. James Watson",
-      date: "October 28, 2024",
+      date: "Oct 28, 2024",
       category: "Algorithms",
       heroImage: "/assets/img.jpg",
       readTime: "8 min read",
@@ -210,9 +210,9 @@ const LandingPage: React.FC = () => {
         <div className="home__purple-gradient"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="home__title">Kadeeno Pulse</h1>
+          <h1 className="home__title">Kadeeno AI Pulse</h1>
           <p className="text-sm md:text-2xl mb-4 text-gray-200 pt-10">
-            Capturing the heartbeat of Artificial Intelligence.
+            Capturing the heartbeat of AI and Innovation.
           </p>
           <SubscribeForm />
           <p className="home__subscribe-text pt-10">
